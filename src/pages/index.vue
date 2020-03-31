@@ -61,12 +61,12 @@
           v-for="(item, index) in adsList"
           :key="index"
         >
-          <img v-bind:src="item.img" alt="" />
+          <img v-lazy="item.img" alt="" />
         </a>
       </div>
       <div class="banner">
         <a href="/#/prosuct/30">
-          <img src="/imgs/banner-1.png" alt="" />
+          <img v-lazy="'/imgs/banner-1.png'" alt="" />
         </a>
       </div>
     </div>
@@ -75,19 +75,19 @@
         <h2>手机</h2>
         <div class="wrapper">
           <div class="banner-left">
-            <a href="/#/product/35"><img src="/imgs/mix-alpha.jpg" alt=""/></a>
+            <a href="/#/product/35"><img v-lazy="'/imgs/mix-alpha.jpg'" alt=""/></a>
           </div>
           <div class="list-box">
             <div class="list" v-for="(arr, i) in phoneList" v-bind:key="i">
               <div class="item" v-for="(item, j) in arr" :key="j">
                 <span v-bind:class="{ 'new-pro': j % 2 == 0 }">新品</span>
                 <div class="item-img">
-                  <img v-bind:src="item.mainImage" alt="" />
+                  <img v-lazy="item.mainImage" alt="" />
                 </div>
                 <div class="item-info">
                   <h3>{{ item.name }}</h3>
                   <p>{{ item.subtitle }}</p>
-                  <p class="price">{{ item.price }}元</p>
+                  <p class="price" @click="addCart(item.id)">{{ item.price }}元</p>
                 </div>
               </div>
             </div>
@@ -101,7 +101,9 @@
       sureText="查看购物车"
       btnType="1"
       modalType="middle"
-      v-bind:showModal="true">
+      v-bind:showModal="showModal"
+      v-on:submit="goToCart"
+      v-on:cancel="showModal=false">
       <template v-slot:body>
         <p>商品添加成功</p>
       </template>
@@ -211,7 +213,8 @@ export default {
           img: "/imgs/ads/ads-4.jpg"
         }
       ],
-      phoneList: []
+      phoneList: [],
+      showModal:false
     };
   },
   mounted() {
@@ -230,7 +233,21 @@ export default {
           res.list = res.list.slice(6, 14);
           this.phoneList = [res.list.slice(0, 4), res.list.slice(4, 8)];
         });
-    }
+    },
+    addCart(){
+        this.showModal = true;
+      // this.axios.post('/carts',{
+      //   productId:id,
+      //   selected: true
+      // }).then(()=>{
+
+      // }).catch(()=>{
+      //   this.showModal = true;
+      // })
+    },
+    goToCart(){
+        this.$router.push('/cart');
+      }
   }
 };
 </script>
