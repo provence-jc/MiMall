@@ -2,7 +2,7 @@ export default {
     saveUserName(context,username){
         context.commit('saveUserName',username);
     },
-    savecartCount(context, cartCount) {
-        context.commit('savecartCount', cartCount);
+    saveCartCount(context, cartCount) {
+        context.commit('saveCartCount', cartCount);
     }
 }

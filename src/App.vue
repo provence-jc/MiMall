@@ -5,18 +5,21 @@
 </template>
 
 <script>
-// import storage from './storage/index.js'
 export default {
-  name: "App",
-  components: {},
-  data() {
-    return {
-      res: {}
-    };
+  name: 'app',
+  components: {
+    
   },
-  mounted() {
-    this.getUser();
-    this.getCartCount();
+  data(){
+    return {
+      
+    }
+  },
+  mounted(){
+    if(this.$cookie.get('userId')){
+      this.getUser();
+      this.getCartCount();
+    }
   },
   methods:{
     getUser(){
@@ -26,15 +29,15 @@ export default {
     },
     getCartCount(){
       this.axios.get('/carts/products/sum').then((res=0)=>{
-        this.$store.dispatch('savecartCount',res);
+        this.$store.dispatch('saveCartCount',res);
       })
     }
   }
-};
+}
 </script>
 
 <style lang="scss">
-@import "./assets/scss/reset.scss";
-@import "./assets/scss/config.scss";
-@import "./assets/scss/button.scss";
+@import './assets/scss/reset.scss';
+@import './assets/scss/config.scss';
+@import './assets/scss/button.scss';
 </style>
