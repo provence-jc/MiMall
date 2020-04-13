@@ -9,10 +9,10 @@
           <a href="#">协议规则</a>
         </div>
         <div class="topbar-user">
-          <a href="#" v-if="username">{{ username }}</a>
-          <a href="#" v-if="!username" @click="login">登录</a>
-          <a href="#" v-if="username" @click="logout">退出</a>
-          <a href="#" v-if="username">注册</a>
+          <a href="javascript:;" v-if="username">{{ username }}</a>
+          <a href="javascript:;" v-if="!username" @click="login">登录</a>
+          <a href="javascript:;" v-if="username" @click="logout">退出</a>
+          <a href="/#/order/list" v-if="username">我的订单</a>
                     <a href="javascript:;" class="my-cart" @click="goToCart"><span class="icon-cart"></span>购物车({{cartCount}})</a>
 
         </div>
