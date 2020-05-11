@@ -158,7 +158,7 @@ export default {
     },
     getProductList() {
       this.axios
-        .get("/products", {
+        .get("http://mall-pre.springboot.cn/products", {
           params: {
             categoryId: "100012",
             pageSize: 6
@@ -169,12 +169,12 @@ export default {
         });
     },
     getCartCount(){
-      this.axios.get('/carts/products/sum').then((res=0)=>{
+      this.axios.get('http://mall-pre.springboot.cn/carts/products/sum').then((res=0)=>{
         this.$store.dispatch('saveCartCount',res);
       })
     },
     logout(){
-      this.axios.post("/user/logout").then(()=>{
+      this.axios.post("http://mall-pre.springboot.cn/user/logout").then(()=>{
         this.$message.success('退出成功');
         this.$cookie.set('userId','',{expires:'-4'});
         this.$store.dispatch('saveUserName','');

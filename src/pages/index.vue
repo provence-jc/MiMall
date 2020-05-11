@@ -223,7 +223,7 @@ export default {
   methods: {
     init() {
       this.axios
-        .get("/products", {
+        .get("http://mall-pre.springboot.cn/products", {
           params: {
             categoyrId: 100012,
             pageSize: 14
@@ -235,7 +235,7 @@ export default {
         });
     },
     addCart(id){
-        this.axios.post('/carts',{
+        this.axios.post('http://mall-pre.springboot.cn/carts',{
           productId:id,
           selected: true
         }).then((res)=>{
