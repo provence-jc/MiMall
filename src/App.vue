@@ -14,6 +14,7 @@ export default {
     return {
       
     }
+    
   },
   mounted(){
     const { NODE_ENV } = process.env;
