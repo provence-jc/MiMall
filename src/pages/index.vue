@@ -147,11 +147,11 @@ export default {
       slideList: [
         {
           id: "42",
-          img:require ("../assets/imgs/slider/slide-1.jpg")
+          img: "../../imgs/slider/slide-1.jpg"
         },
         {
           id: "46",
-          img:require ("../assets/imgs/slider/slide-2.jpg")
+          img: "../imgs/slider/slide-2.jpg"
         },
         {
           id: "42",

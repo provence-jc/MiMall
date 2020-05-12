@@ -12,8 +12,9 @@ module.exports = {
             }
         }
     },
-    publicPath:'',
+    publicPath:'./',
     // outputDir:'dist',
+    // assetsDir: "assets",
     // indexPath:'index2.html',
     // lintOnSave:false,
     productionSourceMap: true,
